@@ -57,6 +57,27 @@ main p{
     text-align: justify;
 }
 
+.form-control label {
+    display: block;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.form-control input,
+.form-control textarea {
+    display: block;
+    font-size: 2rem;
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 0.7rem;
+}
+
+.form-control input[type="text"],
+.form-control input[type="email"],
+.form-control textarea {
+    width: 100%;
+}
+
 #toggleMenu {
     display: block;
     float: right;
