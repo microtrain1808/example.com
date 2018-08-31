@@ -1,7 +1,10 @@
 <?php
 include 'core/Jason/src/Validation/Validate.php';
+include 'vendor/autoload.php';
+include '../config/keys.php';
 
 use Jason\Validation;
+use Mailgun\Mailgun;
 
 $valid = new Jason\Validation\Validate();
 
@@ -34,8 +37,22 @@ if(!empty($input)){
     $valid->check($input);
 
     if(empty($valid->errors)){
-        $message = '<div>Your form has been submitted</div>';
-        header('LOCATION: thanks.php');
+
+        # Instantiate the client.
+        $mgClient = new Mailgun(MG_KEY);
+
+        # Make the call to the client.
+        $result = $mgClient->sendMessage(MG_DOMAIN,[
+            'from'    => "{$input['name']} <{$input['email']}>",
+            'to'      => 'Jason Snider <jsnider@microtrain.net>',
+            'subject' => 'Contact form submitted',
+            'text'    => $input['message']
+        ]);
+
+        if($result->http_response_code == 200){
+            return header('LOCATION: thanks.php');
+        }
+
     }else{
         $message = '<div style="color:#ff0000">Your form has errors!</div>';
     }
