@@ -1,5 +1,5 @@
 <?php
-include '../core/db_connect.php';
+include '../../core/db_connect.php';
 $stmt = $pdo->query('SELECT * FROM posts');
 
 $content='<h1>Blog Posts</h1>';
@@ -9,6 +9,9 @@ while($row=$stmt->fetch()){
 }
 $content .= "</ul>";
 
+$content.="<br><br>";
+$content.="<a href=\"add-post.php\">Add a Post</a>";
 
 
-include '../core/layout.php';
+
+include '../../core/layout.php';

@@ -1,5 +1,5 @@
 <?php
-include '../core/db_connect.php';
+include '../../core/db_connect.php';
 
 $input = filter_input_array(INPUT_GET);
 $slug = preg_replace("/[^a-z0-9-]+/","-", strtolower($input['slug']));
@@ -14,4 +14,4 @@ $content.=$row['body'];
 
 $content.="<br><br><a href=\"edit-post.php?id={$row['id']}\">EDIT</a>";
 
-include '../core/layout.php';
+include '../../core/layout.php';

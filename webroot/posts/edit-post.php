@@ -1,6 +1,6 @@
 <?php
 
-include '../core/db_connect.php';
+include '../../core/db_connect.php';
 
 $getInput = filter_input_array(INPUT_GET);
 $sql='SELECT * FROM posts WHERE id=?';
@@ -26,7 +26,7 @@ if(!empty($postInput)){
         $postInput['body'],
         $postInput['id']
     ])){
-       header('LOCATION:posts.php'); 
+       header('LOCATION:/posts'); 
     }else{
         $message = 'Something bad happened';
     }
@@ -58,4 +58,4 @@ $content = <<<EOT
 </div>
 EOT;
 
-include '../core/layout.php';
+include '../../core/layout.php';

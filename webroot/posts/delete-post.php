@@ -1,6 +1,6 @@
 <?php
 
-include '../core/db_connect.php';
+include '../../core/db_connect.php';
 
 $getInput = filter_input_array(INPUT_GET);
 $sql='SELECT * FROM posts WHERE id=?';
@@ -18,7 +18,7 @@ if(!empty($getInput['delete'])){
     if($pdo->prepare($sql)->execute([
         $getInput['id']
     ])){
-       header('LOCATION:posts.php'); 
+       header('LOCATION:/posts'); 
     }else{
         $message = 'Something bad happened';
     }
@@ -32,7 +32,7 @@ Are you sure you want to delete the post titled
 </p>
 
 <h4>
-<a href="posts.php">No, take me back to saftey!</a>
+<a href="/posts">No, take me back to saftey!</a>
 </h4>
 
 <br><br>
@@ -42,4 +42,4 @@ Are you sure you want to delete the post titled
 
 EOT;
 
-include '../core/layout.php';
+include '../../core/layout.php';

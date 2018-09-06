@@ -1,5 +1,5 @@
 <?php
-include '../core/db_connect.php';
+include '../../core/db_connect.php';
 
 $input = filter_input_array(INPUT_POST);
 
@@ -17,7 +17,7 @@ if(!empty($input)){
         $slug,
         $input['body']
     ])){
-       header('LOCATION:posts.php'); 
+       header('LOCATION:/posts'); 
     }else{
         $message = 'Something bad happened';
     }
@@ -43,4 +43,4 @@ $content = <<<EOT
 </form>
 EOT;
 
-include '../core/layout.php';
+include '../../core/layout.php';
