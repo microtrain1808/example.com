@@ -52,6 +52,10 @@ $content = <<<EOT
     <input type="submit" value="Submit">
 </div>
 </form>
+<br><br>
+<div>
+<a href="delete-post.php?id={$post['id']}">DELETE</a>
+</div>
 EOT;
 
 include '../core/layout.php';
